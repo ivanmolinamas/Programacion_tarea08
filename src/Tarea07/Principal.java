@@ -1,5 +1,6 @@
 package Tarea07;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -8,10 +9,11 @@ import java.util.Scanner;
  * @author ivan Molina Mas
  */
 public class Principal {
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        
+
         // se declaran las variables necesarias fuera del bucle
         String nombreTitular, apellidosTitular, DNITitular, IBAN, listaEntidades, listaEntidadesEmp, buscaIBAN;
         double saldo, tipoInteres, mantenimientoPer, maxDescubierto, interesDescubierto, comisionDescubierto, ingreso, retirar, obtenersaldo;
@@ -28,7 +30,6 @@ public class Principal {
 
         //con un while se crea el bucle del menu hasta seleccionar el 7,
         // la variable salir es un booleano con true, en la opcion 7 el booleano es false.
-        
         while (salir) {
 
             try {
@@ -41,7 +42,8 @@ public class Principal {
                 System.out.println("4 - Realizar ingreso en una cuenta.");
                 System.out.println("5 - Retirar efectivo de una cuenta.");
                 System.out.println("6 - Consultar el saldo actual de una cuenta.");
-                System.out.println("7 - Salir de la apliacion.");
+                System.out.println("7 - Elimina cuenta bancaria.");
+                System.out.println("8 - Salir de la apliacion.");
 
                 menu = sc.nextInt();
                 sc.nextLine();
@@ -147,6 +149,9 @@ public class Principal {
                         for (int i = 0; i < listaCuentas.length; i++) {
                             System.out.println(listaCuentas[i]);
                         }
+//                        for (String lcuentas : listaCuentas) {
+//                            System.out.println(listaCuentas.toString());
+//                        }
 
                         break;
                     case 3:
@@ -202,6 +207,21 @@ public class Principal {
 
                         break;
                     case 7:
+                        //Eliminar cuenta
+                        System.out.println("Para borrar una cuenta el saldo debe ser 0");
+                        System.out.println("Introduzca el IBAN");
+                        buscaIBAN = sc.next();
+
+                        if (banco.cerrarCuenta(buscaIBAN)) {
+                            System.out.println("La cuenta ha sido eliminada");
+                        } else {
+                            System.out.println("No se borro la cuenta: ");
+                            System.out.println("saldo superior a 0 o no existe");
+                        }
+
+                        break;
+
+                    case 8:
                         System.out.println("Salir de la apliacion");
                         salir = false;
                         //Salir de la apliacion
@@ -218,7 +238,9 @@ public class Principal {
             }
 
         }
-        System.out.println("Hasta luego!");
+
+        System.out.println(
+                "Hasta luego!");
     }
 
 }
