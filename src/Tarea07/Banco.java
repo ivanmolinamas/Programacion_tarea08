@@ -9,6 +9,7 @@ import java.util.*;
 public class Banco {
 
     // se creara un ArrayList para almacenar cuentas
+    // un ArrayList es la mejor opcion aqui ya que tenemos una lista dinamica y ordenada
     private ArrayList<CuentaBancaria> cuentas;
 
 //    private CuentaBancaria[] cuentas;
